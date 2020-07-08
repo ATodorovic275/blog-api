@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         //     ]);
 
         // $this->call(AuthorTableSeeder::class);
+
+        //after inserted categories and authors
         $this->call(PostsTableSeeder::class);
 
     }
