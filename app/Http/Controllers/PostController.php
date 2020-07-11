@@ -14,7 +14,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::paginate();
+        return Post::with('author:id,first_name,last_name')
+            ->with('category:id,name')
+            ->with('image')
+            ->paginate(10);
     }
 
     public function getRandomPosts()
@@ -23,6 +26,7 @@ class PostController extends Controller
             inRandomOrder()
             ->with('author:id,first_name,last_name')
             ->with('category:id,name')
+            ->with('image')
             ->offset(0)->limit(3)->get();
     }
 
@@ -31,6 +35,14 @@ class PostController extends Controller
         return Post::orderBy("date")->get();
     }
 
+    public function getPostsFromCategory($id)
+    {
+        return Post::
+            with('author:id,first_name,last_name')
+            ->with('category:id,name')
+            ->with("image")
+            ->where("category_id", $id)->get();
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -60,7 +72,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return Post::with('author:id,first_name,last_name')
+            ->with('category:id,name')
+            ->with('image')
+            ->find($id);
     }
 
     /**

@@ -21,5 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('post', 'PostController');
 Route::get("/random-post", "PostController@getRandomPosts");
 Route::get("/latest-post", "PostController@getLatestPosts");
+Route::get("/category-post/{id}", "PostController@getPostsFromCategory");
 
 Route::resource('category', 'CategoryController');
