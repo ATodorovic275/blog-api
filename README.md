@@ -3,7 +3,7 @@
 This is a api for [angular aplication](https://github.com/ATodorovic275/angular-blog)
 
 
-# Used tehnologies:
+# Used technologies:
  - Php
  - Laravel
 
